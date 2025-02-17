@@ -16,9 +16,6 @@ namespace MohawkGame2D
         int rainCount = 400;
         int[] rainPositionsX;
         int[] rainPositionsY;
-        float x;
-        float radius = 50;
-        float speed = 200;
 
 
         public void Setup()
