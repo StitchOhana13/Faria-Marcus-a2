@@ -6,8 +6,6 @@ using MohawkGame2D;
 //rubric requirements:
 // Program Input 1 (waves move), 2 (rain falls), 3 (random lightning strike)
 //Program Arrays 
-//Program Loops
-//Code Elements
 
 // The namespace your code is in.
 namespace MohawkGame2D
@@ -68,12 +66,20 @@ namespace MohawkGame2D
             //Waves loop
             Draw.FillColor = DeepOcean;
             Draw.LineColor = DeepOcean;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 11; i++)
             {
                 int x = 50 + i * 75;
                 Draw.Arc(x, 510, 100, 100, 305, 45);
             }
 
+            // Storm Clouds loop
+            Draw.FillColor = Color.DarkGray;
+            Draw.LineColor = Color.DarkGray;
+            for (int i = 0; i < 10; i++)
+            {
+                int x = 50 + i * 100;
+                Draw.Circle(x, 50, 100);
+            }
         }
     }
 
