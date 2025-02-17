@@ -3,9 +3,6 @@ using System;
 using System.Numerics;
 using MohawkGame2D;
 
-//rubric requirements:
-// Program Input 1 (waves move), 2 (rain falls), 3 (random lightning strike)
-//Program Arrays 
 
 // The namespace your code is in.
 namespace MohawkGame2D
@@ -19,6 +16,11 @@ namespace MohawkGame2D
         int rainCount = 400;
         int[] rainPositionsX;
         int[] rainPositionsY;
+        float x;
+        float radius = 50;
+        float speed = 200;
+
+
         public void Setup()
         {
         Window.SetTitle("Pirate Ship");
@@ -38,6 +40,27 @@ namespace MohawkGame2D
             Window.ClearBackground(DarkBlue);
 
             // Lightning
+            void DrawLightning(float x, float y)
+            {
+                // make Lightning appear on mouse click
+                Draw.FillColor = Color.Yellow;
+                Draw.LineColor = Color.Yellow;
+                Draw.Line(x, y, x + 50, y + 100);
+                Draw.Line(x + 50, y + 100, x, y + 200);
+                Draw.Line(x, y + 200, x + 50, y + 300);
+                Draw.Line(x + 50, y + 300, x, y + 400);
+                Draw.Line(x, y + 400, x + 50, y + 500);
+                Draw.Line(x, y, x + 50, y - 100);
+                Draw.Line(x + 50, y - 100, x, y - 200);
+                Draw.Line(x, y - 200, x + 50, y - 300);
+                Draw.Line(x + 50, y - 300, x, y - 400);
+                Draw.Line(x, y - 400, x + 50, y - 500);
+            }
+            if (Input.IsMouseButtonDown(MouseInput.Left))
+            {
+                // get mouse click location
+                DrawLightning(Input.GetMouseX(), Input.GetMouseY());
+            }
 
 
             // Pirate Ship body
