@@ -4,10 +4,9 @@ using System.Numerics;
 using MohawkGame2D;
 
 //rubric requirements:
-// Program Input
-//Program Arrays
+// Program Input 1 (waves move), 2 (rain falls), 3 (random lightning strike)
+//Program Arrays 
 //Program Loops
-//Program Custom Drawfunction
 //Code Elements
 
 // The namespace your code is in.
@@ -21,6 +20,7 @@ namespace MohawkGame2D
         // Place your variables here:
         Color DarkBlue = new Color("#04032e"); //night sky colour
         Color DarkBrown = new Color("#1e140a"); //Pirate ship colour
+        Color DeepOcean = new Color("#0b5154"); //ocean colour
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -57,8 +57,23 @@ namespace MohawkGame2D
             Draw.FillColor = Color.White;
             Draw.Rectangle(340, 260, 70, 50);
             Draw.Rectangle(440, 290, 70, 50);
+            Draw.Triangle(377, 220, 377, 230, 390, 225);
+            Draw.Triangle(477, 250, 477, 260, 490, 255);
 
-            //Waves
+            // Ocean
+            Draw.FillColor = DeepOcean;
+            Draw.LineColor = DeepOcean;
+            Draw.Rectangle(0, 500, 800, 100);
+
+            //Waves loop
+            Draw.FillColor = DeepOcean;
+            Draw.LineColor = DeepOcean;
+            for (int i = 0; i < 20; i++)
+            {
+                int x = 50 + i * 75;
+                Draw.Arc(x, 510, 100, 100, 305, 45);
+            }
+
         }
     }
 
