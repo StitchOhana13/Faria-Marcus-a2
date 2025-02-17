@@ -10,31 +10,35 @@ using MohawkGame2D;
 // The namespace your code is in.
 namespace MohawkGame2D
 {
-    /// <summary>
-    ///     Your game code goes inside this class!
-    /// </summary>
     public class Game
     {
         // Place your variables here:
         Color DarkBlue = new Color("#04032e"); //night sky colour
         Color DarkBrown = new Color("#1e140a"); //Pirate ship colour
         Color DeepOcean = new Color("#0b5154"); //ocean colour
-
-        /// <summary>
-        ///     Setup runs once before the game loop begins.
-        /// </summary>
+        int rainCount = 400;
+        int[] rainPositionsX;
+        int[] rainPositionsY;
         public void Setup()
         {
         Window.SetTitle("Pirate Ship");
         Window.SetSize(800, 600);
+
+            rainPositionsX = new int[rainCount];
+            rainPositionsY = new int[rainCount];
+            for (int i = 0; i < rainCount; i++)
+            {
+                rainPositionsX[i] = Random.Integer(0, 800);
+                rainPositionsY[i] = Random.Integer(0, 800);
+            }
         }
 
-        /// <summary>
-        ///     Update runs every frame.
-        /// </summary>
         public void Update()
         {
             Window.ClearBackground(DarkBlue);
+
+            // Lightning
+
 
             // Pirate Ship body
             Draw.FillColor = DarkBrown;
@@ -58,6 +62,14 @@ namespace MohawkGame2D
             Draw.Triangle(377, 220, 377, 230, 390, 225);
             Draw.Triangle(477, 250, 477, 260, 490, 255);
 
+            // Rain
+            Draw.FillColor = Color.Blue;
+            Draw.LineColor = Color.Blue;
+            for(int i = 0; i < rainCount; i++)
+            {
+                Draw.Ellipse(rainPositionsX[i], rainPositionsY[i], 2, 10);
+            }
+
             // Ocean
             Draw.FillColor = DeepOcean;
             Draw.LineColor = DeepOcean;
@@ -71,6 +83,7 @@ namespace MohawkGame2D
                 int x = 50 + i * 75;
                 Draw.Arc(x, 510, 100, 100, 305, 45);
             }
+
 
             // Storm Clouds loop
             Draw.FillColor = Color.DarkGray;
